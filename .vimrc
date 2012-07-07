@@ -1,0 +1,117 @@
+set rtp+=~/.vim/vundle.git/
+call vundle#rc()
+Bundle "rails.vim"
+Bundle 'sgur/vundle'
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimshell'
+Bundle 'Shougo/vimfiler'
+Bundle 'Shougo/vimproc'
+Bundle 'tyru/restart.vim'
+Bundle 'tyru/caw.vim'
+Bundle 'h1mesuke/unite-outline'
+Bundle 'molokai'
+Bundle 'thinca/vim-quickrun'
+colorscheme molokai
+set encoding=utf-8
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+set nopaste
+set ffs=unix
+set nobomb
+set ttyfast
+"set term=xterm-color
+set backspace=2
+set cmdheight=2
+set noswapfile
+set nobackup
+set nowritebackup
+set hidden
+set ignorecase
+set noincsearch
+set smartcase
+set wrapscan
+
+highlight ZenkakuSpace guibg=white
+highlight ZenkakuSpace ctermbg=white
+match ZenkakuSpace /!!/
+
+syntax on
+autocmd! BufRead,BufNewFile *.t.html set filetype=html
+autocmd! BufRead,BufNewFile *.tpl set filetype=html
+autocmd! BufRead,BufNewFile *.erb set filetype=html
+autocmd! BufRead,BufNewFile *.ejs set filetype=html
+set number
+set hlsearch
+set listchars=tab:*-,extends:~,trail:_
+set list
+set ruler
+set expandtab
+set smarttab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set showmatch
+set showmode
+set showcmd
+set visualbell
+
+nnoremap j gj
+nnoremap k gk
+
+"map <kPlus> <C-W>+
+"map <kMinus> <C-W>-
+"set mouse=a
+let g:netrw_liststyle = 3 
+nmap <Leader>a :%s/\v {1,}$//g<CR>
+let g:qb_hotkey = ";;"
+"let g:neocomplcache_enable_at_startup = 1
+au FileType javascript set ts=2 sw=2 expandtab
+au BufRead,BufNewFile *.js set filetype=javascript fenc=utf-8
+filetype on
+filetype indent on
+"filetype plugin on
+nnoremap <C-i> [<C-i>
+nnoremap <Nul> [<C-i>
+set tags+=~/.tags
+
+let g:ref_refe_cmd = "/usr/local/src/ruby-refm-1.9.2-dynamic-20110729/refe-1_9_2"
+let $PATH = $PATH . ':/usr/local/bin'
+""" ref.vim
+let g:ref_use_vimproc = 0   " vimprocをインストールしてない場合は0を指定
+nmap ,rr :<C-u>Ref refe<Space>
+let NERDChristmasTree=1
+let NERDTreeHighlightCursorline=1
+set modifiable
+noremap <F3> :Rtree<CR>
+noremap F :FufFile<CR>
+"set noea
+let g:surround_{char2nr("-")} = "<% \r %>"
+let g:surround_{char2nr("=")} = "<%= \r %>"
+let g:surround_{char2nr("!")} = "<span <%= styles(:red) %>>\r</span>"
+vnoremap p "_xP
+
+""" unite.vim
+" 入力モードで開始する
+let g:unite_enable_start_insert=1
+" バッファ一覧
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+" ファイル一覧
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" レジスタ一覧
+nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+" 常用セット
+nnoremap <silent> ,uu :<C-u>UniteWithCurrentDir buffer file_mru<CR>
+" 全部乗せ
+nnoremap <silent> ,ua :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
+
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> <ESC>q
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC><ESC>q
+au FileType unite nnoremap <silent> <buffer> <ESC>uu <ESC>q
+au FileType unite inoremap <silent> <buffer> <ESC>uu <ESC><ESC>q
+
+nnoremap <silent> <Leader>ql :BrowserReload<CR>
+"let g:netrw_liststyle=3
+let g:quickrun_config = {}
+let g:quickrun_config['node.js'] = {'command': 'node'}
