@@ -12,6 +12,8 @@ Bundle 'tyru/caw.vim'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'molokai'
 Bundle 'thinca/vim-quickrun'
+Bundle 'LeafCage/foldCC'
+set t_Co=256
 colorscheme molokai
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
@@ -115,3 +117,14 @@ nnoremap <silent> <Leader>ql :BrowserReload<CR>
 "let g:netrw_liststyle=3
 let g:quickrun_config = {}
 let g:quickrun_config['node.js'] = {'command': 'node'}
+
+" folding
+set foldmethod=syntax
+set foldlevel=99  " folding は行わない
+set foldcolumn=0 "ウィンドウの端に確保される折畳を示すカラムの幅
+" LeafCage/foldCC
+" @see http://d.hatena.ne.jp/leafcage/20111223/1324705686
+set foldtext=FoldCCtext()
+set foldcolumn=5
+set fillchars=vert:\|
+noremap <silent> <C-g> :echo FoldCCnavi()<CR>
