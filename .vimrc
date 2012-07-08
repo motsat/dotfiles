@@ -14,8 +14,8 @@ Bundle 'h1mesuke/unite-outline'
 Bundle 'molokai'
 Bundle 'thinca/vim-quickrun'
 Bundle 'LeafCage/foldCC'
-Bundle 'LeafCage/foldCC'
 Bundle 'Align'
+Bundle 'taglist.vim'
 set t_Co=256
 colorscheme molokai
 set encoding=utf-8
