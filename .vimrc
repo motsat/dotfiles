@@ -1,4 +1,5 @@
 set rtp+=~/.vim/vundle.git/
+noremap [space]i zMzv
 call vundle#rc()
 Bundle "rails.vim"
 Bundle 'sgur/vundle'
@@ -13,6 +14,8 @@ Bundle 'h1mesuke/unite-outline'
 Bundle 'molokai'
 Bundle 'thinca/vim-quickrun'
 Bundle 'LeafCage/foldCC'
+Bundle 'LeafCage/foldCC'
+Bundle 'Align'
 set t_Co=256
 colorscheme molokai
 set encoding=utf-8
@@ -65,7 +68,7 @@ nnoremap k gk
 "set mouse=a
 let g:netrw_liststyle = 3 
 nmap <Leader>a :%s/\v {1,}$//g<CR>
-let g:qb_hotkey = ";;"
+"let g:qb_hotkey = ";;"
 "let g:neocomplcache_enable_at_startup = 1
 au FileType javascript set ts=2 sw=2 expandtab
 au BufRead,BufNewFile *.js set filetype=javascript fenc=utf-8
@@ -81,7 +84,6 @@ let $PATH = $PATH . ':/usr/local/bin'
 """ ref.vim
 let g:ref_use_vimproc = 0   " vimprocをインストールしてない場合は0を指定
 nmap ,rr :<C-u>Ref refe<Space>
-let NERDChristmasTree=1
 let NERDTreeHighlightCursorline=1
 set modifiable
 noremap <F3> :Rtree<CR>
@@ -97,6 +99,7 @@ vnoremap p "_xP
 let g:unite_enable_start_insert=1
 " バッファ一覧
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+nnoremap <silent> ;; :<C-u>Unite buffer<CR>
 " ファイル一覧
 nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 " レジスタ一覧
@@ -108,10 +111,14 @@ nnoremap <silent> ,uu :<C-u>UniteWithCurrentDir buffer file_mru<CR>
 " 全部乗せ
 nnoremap <silent> ,ua :<C-u>UniteWithCurrentDir -buffer-name=files buffer file_mru bookmark file<CR>
 
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> <ESC>q
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC><ESC>q
+"au FileType unite nnoremap <silent> <buffer> <ESC><ESC> <ESC>q
+"au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC><ESC>q
 au FileType unite nnoremap <silent> <buffer> <ESC>uu <ESC>q
 au FileType unite inoremap <silent> <buffer> <ESC>uu <ESC><ESC>q
+
+" unite ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
 nnoremap <silent> <Leader>ql :BrowserReload<CR>
 "let g:netrw_liststyle=3
@@ -128,3 +135,17 @@ set foldtext=FoldCCtext()
 set foldcolumn=5
 set fillchars=vert:\|
 noremap <silent> <C-g> :echo FoldCCnavi()<CR>
+
+" foldの操作系。z使うのが指に良くないのでいろいろ変える
+noremap [space] <nop>
+nmap <Space> [space]
+noremap [space]j zj
+noremap [space]k zk
+noremap [space]n ]z
+noremap [space]p [z
+noremap [space]h zc
+noremap [space]l zo
+noremap [space]a za
+noremap [space]m zM
+noremap [space]r zR
+noremap [space]f zf

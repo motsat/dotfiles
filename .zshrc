@@ -11,6 +11,8 @@ alias -g V="| vim -R -"
 alias t="cd /var/project/hoge"
 alias be="bundle exec"
 alias psuni="ps aux | grep -v 'grep' | grep --color unicorn"
+alias g="grep -inr --color "
+
 setopt list_packed
 export PATH="$PATH:/usr/local/sbin"
 #autoload -U predict-on
