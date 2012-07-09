@@ -1,3 +1,4 @@
+
 set rtp+=~/.vim/vundle.git/
 noremap [space]i zMzv
 call vundle#rc()
@@ -16,6 +17,8 @@ Bundle 'thinca/vim-quickrun'
 Bundle 'LeafCage/foldCC'
 Bundle 'Align'
 Bundle 'taglist.vim'
+Bundle 'fuenor/qfixgrep.git'
+Bundle "grep.vim"
 set t_Co=256
 colorscheme molokai
 set encoding=utf-8
@@ -149,3 +152,24 @@ noremap [space]a za
 noremap [space]m zM
 noremap [space]r zR
 noremap [space]f zf
+imap <C-k> <Plug>(neocomplcache_snippets_expand)
+smap <C-k> <Plug>(neocomplcache_snippets_expand)
+let g:neocomplcache_enable_at_startup = 1
+" vimでquickfixを自動で開く
+" http://webtech-walker.com/archive/2009/09/29213156.html
+"set grepprg="grep -rnIH --exclude-dir=.svn"
+set grepprg=grep\ -nH\ --exclude\ \"\*svn\*\"
+autocmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) != 0 | copen | endif
+"let mygrepprg = 'grep -inr'
+if has('mac')
+  if system('which gxargs')
+    let Grep_Xargs_Path = 'gxargs'
+  else
+    let Grep_Find_Use_Xargs = 0
+  endif
+endif
+let Grep_Skip_Dirs = '.svn'
+let Grep_Skip_Files = '*.bak *~'
+
+"検索highlightを消す
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
