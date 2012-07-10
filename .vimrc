@@ -1,4 +1,3 @@
-
 set rtp+=~/.vim/vundle.git/
 noremap [space]i zMzv
 call vundle#rc()
@@ -173,3 +172,4 @@ let Grep_Skip_Files = '*.bak *~'
 
 "検索highlightを消す
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
+setlocal cursorline

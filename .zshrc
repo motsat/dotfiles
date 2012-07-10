@@ -8,7 +8,6 @@ setopt auto_pushd
 setopt correct
 setopt auto_cd
 alias -g V="| vim -R -"
-alias t="cd /var/project/hoge"
 alias be="bundle exec"
 alias psuni="ps aux | grep -v 'grep' | grep --color unicorn"
 alias g="grep -inr --color "
