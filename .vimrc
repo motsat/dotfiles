@@ -18,6 +18,7 @@ Bundle 'Align'
 Bundle 'taglist.vim'
 Bundle 'fuenor/qfixgrep.git'
 Bundle "grep.vim"
+Bundle "tpope/vim-fugitive"
 set t_Co=256
 colorscheme molokai
 set encoding=utf-8
