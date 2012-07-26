@@ -3,7 +3,7 @@ noremap [space]i zMzv
 call vundle#rc()
 Bundle "rails.vim"
 Bundle 'sgur/vundle'
-Bundle 'Shougo/neocomplcache'
+"Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/vimshell'
 Bundle 'Shougo/vimfiler'
@@ -154,7 +154,7 @@ noremap [space]r zR
 noremap [space]f zf
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
-let g:neocomplcache_enable_at_startup = 1
+"let g:neocomplcache_enable_at_startup = 1
 " vimでquickfixを自動で開く
 " http://webtech-walker.com/archive/2009/09/29213156.html
 "set grepprg="grep -rnIH --exclude-dir=.svn"
