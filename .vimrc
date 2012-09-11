@@ -19,6 +19,10 @@ Bundle 'taglist.vim'
 Bundle 'fuenor/qfixgrep.git'
 Bundle "grep.vim"
 Bundle "tpope/vim-fugitive"
+Bundle "kien/ctrlp.vim"
+Bundle 'surround.vim'
+Bundle 'ruby-matchit'
+Bundle 'tpope/vim-endwise.git'
 set t_Co=256
 colorscheme molokai
 set encoding=utf-8
@@ -69,7 +73,7 @@ nnoremap k gk
 "map <kPlus> <C-W>+
 "map <kMinus> <C-W>-
 "set mouse=a
-let g:netrw_liststyle = 3 
+"let g:netrw_liststyle = 3
 nmap <Leader>a :%s/\v {1,}$//g<CR>
 "let g:qb_hotkey = ";;"
 "let g:neocomplcache_enable_at_startup = 1
@@ -129,7 +133,7 @@ let g:quickrun_config = {}
 let g:quickrun_config['node.js'] = {'command': 'node'}
 
 " folding
-set foldmethod=syntax
+"set foldmethod=syntax
 set foldlevel=99  " folding は行わない
 set foldcolumn=0 "ウィンドウの端に確保される折畳を示すカラムの幅
 " LeafCage/foldCC
@@ -152,8 +156,8 @@ noremap [space]a za
 noremap [space]m zM
 noremap [space]r zR
 noremap [space]f zf
-imap <C-k> <Plug>(neocomplcache_snippets_expand)
-smap <C-k> <Plug>(neocomplcache_snippets_expand)
+"imap <C-k> <Plug>(neocomplcache_snippets_expand)
+"smap <C-k> <Plug>(neocomplcache_snippets_expand)
 "let g:neocomplcache_enable_at_startup = 1
 " vimでquickfixを自動で開く
 " http://webtech-walker.com/archive/2009/09/29213156.html
@@ -174,3 +178,5 @@ let Grep_Skip_Files = '*.bak *~'
 "検索highlightを消す
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 setlocal cursorline
+let g:ctrlp_max_height=30
+let g:ctrlp_custom_ignore='\.git$\|\.hg$\|\.svn$\|\.rsync_cache$'
