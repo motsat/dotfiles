@@ -31,9 +31,4 @@ setopt hist_ignore_dups     # ignore duplication command history list
 setopt share_history        # share command history data
 
 alias -g G="|grep"
-t config --global alias.co checkout
-git config --global alias.st 'status'
-git config --global alias.ci 'commit -a'
-git config --global alias.di 'diff'
-git config --global alias.br 'branch'
 alias g='grep -inr'
