@@ -1,4 +1,3 @@
-
 set rtp+=~/.vim/vundle.git/
 noremap [space]i zMzv
 call vundle#rc()
@@ -19,6 +18,10 @@ Bundle 'Align'
 Bundle 'taglist.vim'
 Bundle 'fuenor/qfixgrep.git'
 Bundle "grep.vim"
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'kien/ctrlp'
+Bundle 'fatih/vim-go'
 set t_Co=256
 colorscheme molokai
 set encoding=utf-8
@@ -44,6 +47,7 @@ highlight ZenkakuSpace ctermbg=white
 match ZenkakuSpace /!!/
 
 syntax on
+autocmd! BufRead,BufNewFile *.ino set filetype=java
 autocmd! BufRead,BufNewFile *.t.html set filetype=html
 autocmd! BufRead,BufNewFile *.tpl set filetype=html
 autocmd! BufRead,BufNewFile *.erb set filetype=html
@@ -129,9 +133,9 @@ let g:quickrun_config = {}
 let g:quickrun_config['node.js'] = {'command': 'node'}
 
 " folding
-set foldmethod=syntax
-set foldlevel=99  " folding は行わない
-set foldcolumn=0 "ウィンドウの端に確保される折畳を示すカラムの幅
+"set foldmethod=syntax
+"set foldlevel=99  " folding は行わない
+"set foldcolumn=0 "ウィンドウの端に確保される折畳を示すカラムの幅
 " LeafCage/foldCC
 " @see http://d.hatena.ne.jp/leafcage/20111223/1324705686
 set foldtext=FoldCCtext()
@@ -152,24 +156,38 @@ noremap [space]a za
 noremap [space]m zM
 noremap [space]r zR
 noremap [space]f zf
-imap <C-k> <Plug>(neocomplcache_snippets_expand)
-smap <C-k> <Plug>(neocomplcache_snippets_expand)
-let g:neocomplcache_enable_at_startup = 1
+"imap <C-k> <Plug>(neocomplcache_snippets_expand)
+"smap <C-k> <Plug>(neocomplcache_snippets_expand)
+"let g:neocomplcache_enable_at_startup = 1
 " vimでquickfixを自動で開く
 " http://webtech-walker.com/archive/2009/09/29213156.html
 "set grepprg="grep -rnIH --exclude-dir=.svn"
-set grepprg=grep\ -nH\ --exclude\ \"\*svn\*\"
-autocmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) != 0 | copen | endif
-"let mygrepprg = 'grep -inr'
-if has('mac')
-  if system('which gxargs')
-    let Grep_Xargs_Path = 'gxargs'
-  else
-    let Grep_Find_Use_Xargs = 0
-  endif
-endif
-let Grep_Skip_Dirs = '.svn'
-let Grep_Skip_Files = '*.bak *~'
+"set grepprg=grep\ -nH\ --exclude\ \"\*svn\*\"
+"autocmd QuickfixCmdPost make,grep,grepadd,vimgrep if len(getqflist()) != 0 | copen | endif
+""let mygrepprg = 'grep -inr'
+"if has('mac')
+"  if system('which gxargs')
+"    let Grep_Xargs_Path = 'gxargs'
+"  else
+"    let Grep_Find_Use_Xargs = 0
+"  endif
+"endif
+"let Grep_Skip_Dirs = '.svn'
+"let Grep_Skip_Files = '*.bak *~'
 
 "検索highlightを消す
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
+set clipboard=unnamed,autoselect
+" #easymotion の設定
+" ホームポジションに近いキーを使う
+let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
+" 「'」 + 何かにマッピング
+let g:EasyMotion_leader_key="'"
+" 1 ストローク選択を優先する
+let g:EasyMotion_grouping=1
+" カラー設定変更
+hi EasyMotionTarget ctermbg=none ctermfg=red
+hi EasyMotionShade  ctermbg=none ctermfg=blue
+
+"#set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath+=$GOROOT/misc/vim
