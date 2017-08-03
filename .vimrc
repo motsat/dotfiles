@@ -3,7 +3,7 @@ noremap [space]i zMzv
 call vundle#rc()
 Bundle "rails.vim"
 Bundle 'sgur/vundle'
-Bundle 'Shougo/neocomplcache'
+"Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/vimshell'
 Bundle 'Shougo/vimfiler'
@@ -18,10 +18,12 @@ Bundle 'Align'
 Bundle 'taglist.vim'
 Bundle 'fuenor/qfixgrep.git'
 Bundle "grep.vim"
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'kien/ctrlp'
-Bundle 'fatih/vim-go'
+Bundle "tpope/vim-fugitive"
+Bundle "kien/ctrlp.vim"
+Bundle 'surround.vim'
+Bundle 'ruby-matchit'
+Bundle 'tpope/vim-endwise.git'
+
 set t_Co=256
 colorscheme molokai
 set encoding=utf-8
@@ -73,7 +75,7 @@ nnoremap k gk
 "map <kPlus> <C-W>+
 "map <kMinus> <C-W>-
 "set mouse=a
-let g:netrw_liststyle = 3 
+"let g:netrw_liststyle = 3
 nmap <Leader>a :%s/\v {1,}$//g<CR>
 "let g:qb_hotkey = ";;"
 "let g:neocomplcache_enable_at_startup = 1
@@ -134,8 +136,8 @@ let g:quickrun_config['node.js'] = {'command': 'node'}
 
 " folding
 "set foldmethod=syntax
-"set foldlevel=99  " folding は行わない
-"set foldcolumn=0 "ウィンドウの端に確保される折畳を示すカラムの幅
+set foldlevel=99  " folding は行わない
+set foldcolumn=0 "ウィンドウの端に確保される折畳を示すカラムの幅
 " LeafCage/foldCC
 " @see http://d.hatena.ne.jp/leafcage/20111223/1324705686
 set foldtext=FoldCCtext()
@@ -191,3 +193,6 @@ hi EasyMotionShade  ctermbg=none ctermfg=blue
 
 "#set runtimepath^=~/.vim/bundle/ctrlp.vim
 set runtimepath+=$GOROOT/misc/vim
+setlocal cursorline
+let g:ctrlp_max_height=30
+let g:ctrlp_custom_ignore='\.git$\|\.hg$\|\.svn$\|\.rsync_cache$'
