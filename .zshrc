@@ -32,3 +32,5 @@ setopt share_history        # share command history data
 
 alias -g G="|grep"
 alias g='grep -inr'
+
+eval "$(rbenv init -)"
