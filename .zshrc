@@ -64,3 +64,6 @@ PROMPT=$PROMPT'${vcs_info_msg_0_} %{${fg[red]}%}%}$%{${reset_color}%} '
 
 # プロンプト（右）
 RPROMPT='%{${fg[red]}%}[%~]%{${reset_color}%}'
+
+# for autojump
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
