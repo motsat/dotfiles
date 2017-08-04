@@ -26,6 +26,7 @@ if dein#load_state('~/.vim/bundles')
   call dein#add('tpope/vim-rails')
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-endwise.git')
+  call dein#add('tpope/vim-fugitive')
 
   " Required:
   call dein#end()
@@ -115,3 +116,5 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 "rsenseのインストールフォルダがデフォルトと異なるので設定
 "let g:rsenseHome = expand("*Rsenseのインストールパスをここにペースト*")
 let g:rsenseUseOmniFunc = 1
+
+autocmd QuickFixCmdPost *grep* cwindow
