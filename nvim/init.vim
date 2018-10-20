@@ -1,44 +1,49 @@
-if &compatible
-  set nocompatible               " Be iMproved
-endif
+call plug#begin('~/.vim/plugged')
 
-" Required:
-set runtimepath+=/Users/motsat/.cache/dein/repos/github.com/Shougo/dein.vim
+" https://qiita.com/jnchito/items/5141b3b01bced9f7f48fリスペクト
+" ファイルオープンを便利に
+"Plug 'Shougo/unite.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
-" Required:
-if dein#load_state('/Users/motsat/.cache/dein')
-  call dein#begin('/Users/motsat/.cache/dein')
+" Unite.vimで最近使ったファイルを表示できるようにする
+"Plug 'Shougo/neomru.vim'
+" カラースキーマ
+Plug 'morhetz/gruvbox'
+" ファイルをtree表示してくれる
+Plug 'scrooloose/nerdtree'
+" Gitを便利に使う
+Plug 'tpope/vim-fugitive'
+" Rails向けのコマンドを提供する
+Plug 'tpope/vim-rails'
+" Ruby向けにendを自動挿入してくれる
+Plug 'tpope/vim-endwise'
+" " コメントON/OFFを手軽に実行
+Plug 'tomtom/tcomment_vim'
+" ログファイルを色づけしてくれる
+Plug 'vim-scripts/AnsiEsc.vim'
+" 行末の半角スペースを可視化
+Plug 'bronson/vim-trailing-whitespace'
 
-  " Let dein manage dein
-  " Required:
-  call dein#add('/Users/motsat/.cache/dein/repos/github.com/Shougo/dein.vim')
-
-  " Add or remove your plugins here like this:
-  " call dein#add('Shougo/neosnippet.vim')
-  " call dein#add('Shougo/neosnippet-snippets')
-  "call dein#add('altercation/vim-colors-solarized')
-  call dein#add('morhetz/gruvbox')
-
-  " Required:
-  call dein#end()
-  call dein#save_state()
-endif
-
-" Required:
-filetype plugin indent on
-
-" If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
-"endif
-
-"colorscheme molokai
-"let g:solarized_termcolors=256
+call plug#end()
+""""""""""""""""""""""""""""""
 " vimの背景をターミナルと揃える
 autocmd ColorScheme * highlight Normal ctermbg=none
+" 背景はgruvbox
 set background=dark
 colorscheme gruvbox
 syntax enable
 
-noswap
+set noswapfile
 set nu
+
+" タブ文字の表示幅
+set tabstop=2
+" Vimが挿入するインデントの幅
+set shiftwidth=2
+" grep検索の実行後にQuickFix Listを表示する
+autocmd QuickFixCmdPost *grep* cwindow
+
+" ステータス行に現在のgitブランチを表示する
+set statusline+=%{fugitive#statusline()}
+
+set ignorecase
