@@ -40,7 +40,7 @@ endif
 set tags+=.tags;
 set tags+=.Gemfile.lock.tags;
 " tagsジャンプの時に複数ある時は一覧表示  
-"nnoremap <C-]> g<C-]> 
+nnoremap <C-]> g<C-]> 
 """""""""""""""""""""""""""""""
 " vimの背景をターミナルと揃える
 autocmd ColorScheme * highlight Normal ctermbg=none
