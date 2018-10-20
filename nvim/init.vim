@@ -18,14 +18,25 @@ Plug 'tpope/vim-endwise'
 Plug 'vim-scripts/AnsiEsc.vim'
 " 行末の半角スペースを可視化
 Plug 'bronson/vim-trailing-whitespace'
-" Rubyのコードジャンプ
-" :TagsGenerate! でタグ生成、
-" Ctrl+]で飛ぶ
-" Ctrl+oで戻る
+"" Rubyのコードジャンプ
+"" :TagsGenerate! でタグ生成、
+"" Ctrl+]で飛ぶ
+"" Ctrl+oで戻る
 Plug 'szw/vim-tags'
 
 call plug#end()
-""""""""""""""""""""""""""""""
+
+" ctagsの生成設定。fishだと、``がエラーになるので()にする
+let g:vim_tags_project_tags_command = "ctags -f .tags -R . 2>/dev/null"
+if $SHELL =~ '/fish$'
+	let g:vim_tags_gems_tags_command = "ctags -R -f .Gemfile.lock.tags (bundle show --paths) 2>/dev/null"
+elseif
+	let g:vim_tags_gems_tags_command = "ctags -R -f .Gemfile.lock.tags `bundle show --paths` 2>/dev/null"
+endif
+
+set tags+=.tags
+set tags+=.Gemfile.lock.tags
+"""""""""""""""""""""""""""""""
 " vimの背景をターミナルと揃える
 autocmd ColorScheme * highlight Normal ctermbg=none
 " 背景はgruvbox
@@ -45,6 +56,10 @@ autocmd QuickFixCmdPost *grep* cwindow
 
 " ステータス行に現在のgitブランチを表示する
 set statusline+=%{fugitive#statusline()}
+
+" vim-tags
+" ファイル更新時にtagsを勝手に更新してほしいが、nvimが激重になるから切る。:TagsGenerate!を適度にやってく
+let g:vim_tags_auto_generate = 0
 
 set ignorecase
 
