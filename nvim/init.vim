@@ -2,27 +2,27 @@ call plug#begin('~/.vim/plugged')
 
 " https://qiita.com/jnchito/items/5141b3b01bced9f7f48fリスペクト
 " ファイルオープンを便利に
-"Plug 'Shougo/unite.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 
-" Unite.vimで最近使ったファイルを表示できるようにする
-"Plug 'Shougo/neomru.vim'
 " カラースキーマ
 Plug 'morhetz/gruvbox'
 " ファイルをtree表示してくれる
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
 " Gitを便利に使う
 Plug 'tpope/vim-fugitive'
 " Rails向けのコマンドを提供する
 Plug 'tpope/vim-rails'
 " Ruby向けにendを自動挿入してくれる
 Plug 'tpope/vim-endwise'
-" " コメントON/OFFを手軽に実行
-Plug 'tomtom/tcomment_vim'
 " ログファイルを色づけしてくれる
 Plug 'vim-scripts/AnsiEsc.vim'
 " 行末の半角スペースを可視化
 Plug 'bronson/vim-trailing-whitespace'
+" Rubyのコードジャンプ
+" :TagsGenerate! でタグ生成、
+" Ctrl+]で飛ぶ
+" Ctrl+oで戻る
+Plug 'szw/vim-tags'
 
 call plug#end()
 """"""""""""""""""""""""""""""
@@ -47,3 +47,8 @@ autocmd QuickFixCmdPost *grep* cwindow
 set statusline+=%{fugitive#statusline()}
 
 set ignorecase
+
+" jjで挿入モードから抜ける設定
+inoremap <silent> jj <ESC>
+
+"https://blog.mamansoft.net/2018/03/31/investigate-why-vim-moves-slow/
