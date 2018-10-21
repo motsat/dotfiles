@@ -24,6 +24,9 @@ Plug 'bronson/vim-trailing-whitespace'
 "" Ctrl+oで戻る
 Plug 'szw/vim-tags'
 
+" バッファをウインドウで開くやつ
+Plug 'jlanzarotta/bufexplorer'
+
 call plug#end()
 
 " vim-tags
@@ -70,3 +73,8 @@ inoremap <silent> jj <ESC>
 
 " 検索結果のハイライトをESC*2で消す
 nnoremap <ESC><ESC> :nohl<CR>
+"noremap <C-l> :BufExplorer<C-m>
+
+" ;;でBufExplorer起動
+noremap ;; :BufExplorer<C-m>
+
