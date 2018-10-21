@@ -68,4 +68,5 @@ set ignorecase
 " jjで挿入モードから抜ける設定
 inoremap <silent> jj <ESC>
 
-"https://blog.mamansoft.net/2018/03/31/investigate-why-vim-moves-slow/
+" 検索結果のハイライトをESC*2で消す
+nnoremap <ESC><ESC> :nohl<CR>
