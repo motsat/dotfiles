@@ -10,6 +10,8 @@ ln -sf {$PWD,$HOME}/.gitconfig
 mkdir -p $HOME/.vim/bundles
 
 # for neovim
+# vim-plugは手動で入れる
+# https://github.com/junegunn/vim-plug
 mkdir -p $HOME/.config/nvim
 ln -sf $HOME/dotfiles/nvim/init.vim $HOME/.config/nvim/init.vim
 

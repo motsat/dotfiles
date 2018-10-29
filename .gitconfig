@@ -2,7 +2,8 @@
   name = motsat
   email = konpeiex@gmail.com
 [alias]
-  b  = branch -a
+  b  = branch
+  ba = branch -a
   ci = commit
   co = checkout
   st = status

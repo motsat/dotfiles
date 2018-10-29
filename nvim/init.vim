@@ -57,6 +57,9 @@ set nu
 
 " タブ文字の表示幅
 set tabstop=2
+set expandtab
+set tabstop=2 shiftwidth=2 softtabstop=2
+
 " Vimが挿入するインデントの幅
 set shiftwidth=2
 " grep検索の実行後にQuickFix Listを表示する
@@ -78,3 +81,4 @@ nnoremap <ESC><ESC> :nohl<CR>
 " ;;でBufExplorer起動
 noremap ;; :BufExplorer<C-m>
 
+filetype plugin on
