@@ -27,6 +27,10 @@ Plug 'szw/vim-tags'
 " バッファをウインドウで開くやつ
 Plug 'jlanzarotta/bufexplorer'
 
+" カーソル下の検索、カーソル動かさない検索など
+" http://vim.wikia.com/wiki/Search_for_current_word_in_multiple_files
+Plug 'haya14busa/vim-asterisk'
+
 call plug#end()
 
 " vim-tags
@@ -82,3 +86,28 @@ nnoremap <ESC><ESC> :nohl<CR>
 noremap ;; :BufExplorer<C-m>
 
 filetype plugin on
+
+" haya14busa/vim-asteriskのデフォルト設定
+map *   <Plug>(asterisk-*)
+map #   <Plug>(asterisk-#)
+map g*  <Plug>(asterisk-g*)
+map g#  <Plug>(asterisk-g#)
+map z*  <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z#  <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)
+map *   <Plug>(asterisk-*)
+map #   <Plug>(asterisk-#)
+map g*  <Plug>(asterisk-g*)
+map g#  <Plug>(asterisk-g#)
+map z*  <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z#  <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)
+
+" カーソル下をGgrepする設定
+" http://vim.wikia.com/wiki/Search_for_current_word_in_multiple_files
+nnoremap gr :Ggrep <cword> *<CR>
+nnoremap Gr :Ggrep <cword> %:p:h/*<CR>
+nnoremap gR :Ggrep '\b<cword>\b' *<CR>
+nnoremap GR :Ggrep '\b<cword>\b' %:p:h/*<CR>
