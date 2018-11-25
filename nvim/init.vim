@@ -4,6 +4,9 @@ call plug#begin('~/.vim/plugged')
 " ファイルオープンを便利に
 Plug 'ctrlpvim/ctrlp.vim'
 
+" 検索高速化
+Plug 'rking/ag.vim'
+
 " カラースキーマ
 Plug 'morhetz/gruvbox'
 " ファイルをtree表示してくれる
@@ -111,3 +114,11 @@ nnoremap gr :Ggrep <cword> *<CR>
 nnoremap Gr :Ggrep <cword> %:p:h/*<CR>
 nnoremap gR :Ggrep '\b<cword>\b' *<CR>
 nnoremap GR :Ggrep '\b<cword>\b' %:p:h/*<CR>
+
+
+" :ctrlpの検索をagにする。
+" 除外設定は~/.agignore
+if executable('ag')
+  let g:ctrlp_use_caching=0
+  let g:ctrlp_user_command='ag %s -i --nocolor --nogroup -g ""'
+endif
